@@ -14,12 +14,16 @@ async function run() {
           !splitRepository[1]) {
           throw new Error(`Invalid repository '${repository}'. Expected format {owner}/{repo}.`);
       }
-      const owner = splitRepository[0];
-      const repo = splitRepository[1];
+      const repo_owner = splitRepository[0];
+      const repo_name = splitRepository[1];
+      
+      console.log(`repo_owner = ${repo_owner}`);
+      console.log(`repo_name = ${repo_name}`);
+      console.log(`pr_number = ${pr_number}`);
       
       const response = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}/commits', {
-        owner: '${owner}',
-        repo: '${repo}',
+        owner: '${repo_owner}',
+        repo: '${repo_name}',
         pull_number: '${pr_number}'
       });
       console.log(`${response}`);
