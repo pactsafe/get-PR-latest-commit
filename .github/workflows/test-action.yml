@@ -20,8 +20,6 @@ jobs:
       - name: Get the latest commit on PR
         id: get-latest-commit
         uses: ./
-        with:
-          repository: get-PR-latest-commit
 
       - name: print the context of the latest commit
         run: echo "${{ steps.get-latest-commit.outputs.latest-commit-context }}"
