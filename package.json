@@ -1,0 +1,26 @@
+{
+  "name": "get-PR-latest-commit",
+  "version": "1.0.0",
+  "description": "An action to get the latest commit on a pull request, and output the information of the latest commit, include the commit context, commit message, commit SHA.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ActionsRML/get-PR-latest-commit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ActionsRML/get-PR-latest-commit/issues"
+  },
+  "homepage": "https://github.com/ActionsRML/get-PR-latest-commit#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/exec": "^1.0.4",
+    "@actions/github": "^4.0.0",
+    "@octokit/core": "^3.1.0"
+  }
+}
