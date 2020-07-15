@@ -3,7 +3,6 @@ const { Octokit } = require("@octokit/core");
 
 async function run() {
     try {
-      const pr_number = core.getInput('pull-number');
       const token = core.getInput('token');
       const octokit = new Octokit({ auth: `${token}` });
       
@@ -16,6 +15,7 @@ async function run() {
       }
       const repo_owner = splitRepository[0];
       const repo_name = splitRepository[1];
+      const pr_number = core.getInput('pull-number');
       
       console.log(`repo_owner = ${repo_owner}`);
       console.log(`repo_name = ${repo_name}`);
