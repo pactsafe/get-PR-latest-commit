@@ -20,7 +20,7 @@ async function run() {
       const response = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}/commits', {
         owner: '${owner}',
         repo: '${repo}',
-        pull_number: pr_number
+        pull_number: '${pr_number}'
       });
       console.log(`${response}`);
     }
