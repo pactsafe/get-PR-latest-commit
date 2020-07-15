@@ -1,0 +1,28 @@
+name: 'Get latest commit on PR'
+description: 'An action to get the latest commit on a pull request, and output the information of the latest commit.'
+author: 'Bright Ran'
+
+inputs:
+  repository:
+    description: 'The name of the repository which the pull request is in. For example, ActionsRML/latest-commit-on-PR'
+    required: true
+    default: ${{ github.repository }}
+  pull-number:
+    description: 'The number of the pull request.'
+    required: true
+    default: ${{ github.event.pull_request.number }}
+  token:
+    description: 'Personal access token (PAT) used to authenticate.'
+    default: ${{ github.token }}
+
+outputs:
+  latest_commit_context:
+    description: 'The context of the commit.'
+  latest_commit_message:
+    description: 'The commit message.'
+  latest_commit_sha:
+    description: 'The commit SHA.'
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
