@@ -29,8 +29,8 @@ async function run() {
         pull_number: pr_number
       });
       
-//       const response_data = response.date;
-      console.log(response.data);
+      const response_data = response.data;
+      console.log(response_data);
 //       octokit.log.info(response.date)
       
 //       const response = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}/commits', {
