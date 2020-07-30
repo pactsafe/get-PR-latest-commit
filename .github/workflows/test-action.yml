@@ -28,9 +28,7 @@ jobs:
           echo "The latest_commit_sha:"
           echo "${{ steps.get-latest-commit.outputs.latest_commit_sha }}"
           echo "The latest_commit_context:"
-          echo "${{ steps.get-latest-commit.outputs.latest_commit_context }}" > context.json
-          cat context.json
-          
+          echo "${{ steps.get-latest-commit.outputs.latest_commit_context }}"
 
 #   test_scripts:
 #     name: Test scripts
