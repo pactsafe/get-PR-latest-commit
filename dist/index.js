@@ -29,12 +29,14 @@ async function run() {
         pull_number: pr_number
       });
       
+      const response_data = response.date;
+      console.log(`${response_data}`);
+      
 //       const response = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}/commits', {
 //         owner: '${repo_owner}',
 //         repo: '${repo_name}',
 //         pull_number: '${pr_number}'
 //       });
-      console.log(`${response}`);
     }
     catch (error) {
       core.setFailed(error.message);
