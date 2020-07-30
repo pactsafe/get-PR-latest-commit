@@ -7,7 +7,7 @@ inputs:
     description: 'The name of the repository which the pull request is in. For example, ActionsRML/latest-commit-on-PR'
     required: true
     default: ${{ github.repository }}
-  pull-number:
+  pull_number:
     description: 'The number of the pull request.'
     required: true
     default: ${{ github.event.pull_request.number }}
