@@ -5,7 +5,7 @@ const { Octokit } = require("@octokit/rest");
 async function run() {
     try {
       const token = core.getInput('token');
-      const octokit = new Octokit({ auth: "${token}" });
+      const octokit = new Octokit({ auth: token });
 //       const octokit = new Octokit({ auth: `${token}` });
       
       const repository = core.getInput('repository');
