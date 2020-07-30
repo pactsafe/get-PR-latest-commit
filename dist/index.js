@@ -31,8 +31,16 @@ async function run() {
       });
       
       const response_data = response.data;
+      console.log(`length:`);
       console.log(response.data.length);
-      console.log(response.data[response.data.length-1]); 
+      
+      const index = response.data.length -1;
+      console.log(`index:`);
+      console.log(index);
+      
+      const latest_commit = response.data[index];
+      console.log(`The latest commit:`);
+      console.log(latest_commit); 
       
 //       await exec.exec(`bash ${__dirname}/script.sh ${response_data}`);
     }
