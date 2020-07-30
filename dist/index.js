@@ -33,7 +33,7 @@ async function run() {
       const response_data = response.data;
       console.log(response.data.length);
       
-      await exec.exec(`bash ${__dirname}/script.sh ${response_data}`);
+//       await exec.exec(`bash ${__dirname}/script.sh ${response_data}`);
     }
     catch (error) {
       core.setFailed(error.message);
