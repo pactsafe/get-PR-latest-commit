@@ -30,7 +30,7 @@ jobs:
           echo "The latest_commit_sha:"
           echo "${{ steps.get-latest-commit.outputs.latest_commit_sha }}"
           echo "The latest_commit_context:"
-          echo "$LATEST_COMMIT_CONTEXT"
+          echo "${{ env.LATEST_COMMIT_CONTEXT }}"
           
 
 #   test_scripts:
