@@ -1,10 +1,12 @@
 const core = require("@actions/core");
-const { Octokit } = require("@octokit/core");
+const { Octokit } = require("@octokit/rest");
+// const { Octokit } = require("@octokit/core");
 
 async function run() {
     try {
       const token = core.getInput('token');
-      const octokit = new Octokit({ auth: `${token}` });
+      const octokit = new Octokit({ auth: "${token}" });
+//       const octokit = new Octokit({ auth: `${token}` });
       
       const repository = core.getInput('repository');
       const splitRepository = repository.split('/');
@@ -21,11 +23,17 @@ async function run() {
       console.log(`repo_name = ${repo_name}`);
       console.log(`pr_number = ${pr_number}`);
       
-      const response = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}/commits', {
-        owner: '${repo_owner}',
-        repo: '${repo_name}',
-        pull_number: '${pr_number}'
+      const response = await octokit.pulls.listCommits({
+        owner: repo_owner,
+        repo: repo_name,
+        pull_number: pr_number
       });
+      
+//       const response = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}/commits', {
+//         owner: '${repo_owner}',
+//         repo: '${repo_name}',
+//         pull_number: '${pr_number}'
+//       });
       console.log(`${response}`);
     }
     catch (error) {
