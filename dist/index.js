@@ -30,7 +30,7 @@ async function run() {
       });
       
 //       const response_data = response.date;
-      console.log(response.date);
+      console.log(response.data);
 //       octokit.log.info(response.date)
       
 //       const response = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}/commits', {
