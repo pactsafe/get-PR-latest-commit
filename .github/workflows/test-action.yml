@@ -22,13 +22,15 @@ jobs:
         uses: ./
 
       - name: print the info of the latest commit
+        env:
+          LATEST_COMMIT_CONTEXT: ${{ toJson(steps.get-latest-commit.outputs.latest_commit_context) }}
         run: |
           echo "The latest_commit_message:"
           echo "${{ steps.get-latest-commit.outputs.latest_commit_message }}"
           echo "The latest_commit_sha:"
           echo "${{ steps.get-latest-commit.outputs.latest_commit_sha }}"
           echo "The latest_commit_context:"
-          echo "${{ toJson(steps.get-latest-commit.outputs.latest_commit_context) }}"
+          echo "$LATEST_COMMIT_CONTEXT"
           
 
 #   test_scripts:
