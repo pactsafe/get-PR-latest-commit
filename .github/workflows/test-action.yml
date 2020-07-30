@@ -24,43 +24,43 @@ jobs:
       - name: print the context of the latest commit
         run: echo "${{ steps.get-latest-commit.outputs.latest-commit-context }}"
 
-  test_scripts:
-    name: Test scripts
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [Window-02, ubuntu-latest, windows-latest, macos-latest]
-    steps:
-      - name: Get the latest commit on PR
-        shell: bash
-        run: |
-          echo "==================== List commits on the pull request ===================="
-          response=$(curl --request GET \
-          --url 'https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/commits' \
-          --header 'Authorization: token ${{ github.token }}' \
-          --header 'Accept: application/vnd.github.v3+json')
-          echo "$response"
+#   test_scripts:
+#     name: Test scripts
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         os: [Window-02, ubuntu-latest, windows-latest, macos-latest]
+#     steps:
+#       - name: Get the latest commit on PR
+#         shell: bash
+#         run: |
+#           echo "==================== List commits on the pull request ===================="
+#           response=$(curl --request GET \
+#           --url 'https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/commits' \
+#           --header 'Authorization: token ${{ github.token }}' \
+#           --header 'Accept: application/vnd.github.v3+json')
+#           echo "$response"
           
-          echo "-------------------- Length of the array --------------------"
-          length=$(echo "$response" | jq 'length')
-          echo "length = $length"
+#           echo "-------------------- Length of the array --------------------"
+#           length=$(echo "$response" | jq 'length')
+#           echo "length = $length"
           
-          echo "-------------------- Index of the latest commit --------------------"
-          index=$(($length - 1))
-          echo "index = $index"
+#           echo "-------------------- Index of the latest commit --------------------"
+#           index=$(($length - 1))
+#           echo "index = $index"
           
-          echo "==================== Get context of the latest commit ===================="
-          latest_commit=$(echo "$response" | jq --argjson index $index '.[$index]')
-          echo "$latest_commit"
-          echo "::set-output name=latest_commit_context::$latest_commit"
+#           echo "==================== Get context of the latest commit ===================="
+#           latest_commit=$(echo "$response" | jq --argjson index $index '.[$index]')
+#           echo "$latest_commit"
+#           echo "::set-output name=latest_commit_context::$latest_commit"
           
-          echo "==================== Get commit message of the latest commit ===================="
-          latest_commit_message=$(echo "$latest_commit" | jq -r '.commit.message')
-          echo "$latest_commit_message"
-          echo "::set-output name=latest_commit_message::$latest_commit_message"
+#           echo "==================== Get commit message of the latest commit ===================="
+#           latest_commit_message=$(echo "$latest_commit" | jq -r '.commit.message')
+#           echo "$latest_commit_message"
+#           echo "::set-output name=latest_commit_message::$latest_commit_message"
           
-          echo "==================== Get commit SHA of the latest commit ===================="
-          latest_commit_sha=$(echo "$latest_commit" | jq -r '.sha')
-          echo "$latest_commit_sha"
-          echo "::set-output name=latest_commit_sha::$latest_commit_sha"
+#           echo "==================== Get commit SHA of the latest commit ===================="
+#           latest_commit_sha=$(echo "$latest_commit" | jq -r '.sha')
+#           echo "$latest_commit_sha"
+#           echo "::set-output name=latest_commit_sha::$latest_commit_sha"
