@@ -17,11 +17,7 @@ async function run() {
       const repo_owner = splitRepository[0];
       const repo_name = splitRepository[1];
       const pr_number = core.getInput('pull_number');
-      
-      console.log(`repo_owner = ${repo_owner}`);
-      console.log(`repo_name = ${repo_name}`);
-      console.log(`pr_number = ${pr_number}`);
-      
+           
       const response = await octokit.pulls.listCommits({
         owner: repo_owner,
         repo: repo_name,
