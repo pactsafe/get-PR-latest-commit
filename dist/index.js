@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 const { Octokit } = require("@octokit/rest");
+const exec = require("@actions/exec");
 // const { Octokit } = require("@octokit/core");
 
 async function run() {
@@ -31,13 +32,9 @@ async function run() {
       
       const response_data = response.data;
       console.log(response_data);
-//       octokit.log.info(response.date)
       
-//       const response = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}/commits', {
-//         owner: '${repo_owner}',
-//         repo: '${repo_name}',
-//         pull_number: '${pr_number}'
-//       });
+      const length = await exec.exec(`bash length=$(echo "${response_data}" | jq 'length')`);
+      console.log(length);
     }
     catch (error) {
       core.setFailed(error.message);
