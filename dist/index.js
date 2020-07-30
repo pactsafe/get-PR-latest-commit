@@ -27,19 +27,8 @@ async function run() {
         repo: repo_name,
         pull_number: pr_number
       });
-      
-//       const response_data = response.data;
-//       console.log(`length:`);
-//       console.log(response.data.length);
-      
-      const index = response.data.length -1;
-      console.log(`index:`);
-      console.log(index);
-      
-//       const latest_commit = response.data[index];
-//       console.log(`The latest commit:`);
-//       console.log(latest_commit); 
-      
+           
+      const index = response.data.length - 1;          
       core.setOutput('latest_commit_context', response.data[index]);
       core.setOutput('latest_commit_message', response.data[index].commit.message);
       core.setOutput('latest_commit_sha', response.data[index].sha);
