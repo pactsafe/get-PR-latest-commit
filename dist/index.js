@@ -32,6 +32,7 @@ async function run() {
       
       const response_data = response.data;
       console.log(response.data.length);
+      console.log(response.data[response.data.length-1]); 
       
 //       await exec.exec(`bash ${__dirname}/script.sh ${response_data}`);
     }
