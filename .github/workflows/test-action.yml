@@ -21,8 +21,15 @@ jobs:
         id: get-latest-commit
         uses: ./
 
-      - name: print the context of the latest commit
-        run: echo "${{ steps.get-latest-commit.outputs.latest-commit-context }}"
+      - name: print the info of the latest commit
+        run: |
+          echo "The latest_commit_context:"
+          echo "${{ steps.get-latest-commit.outputs.latest_commit_context }}"
+          echo "--------------------------------------------------------------------------------------------------"
+          echo "The latest_commit_message:"
+          echo "${{ steps.get-latest-commit.outputs.latest_commit_message }}"
+          echo "The latest_commit_sha:"
+          echo "${{ steps.get-latest-commit.outputs.latest_commit_sha }}"
 
 #   test_scripts:
 #     name: Test scripts
