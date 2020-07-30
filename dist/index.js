@@ -31,9 +31,9 @@ async function run() {
       });
       
       const response_data = response.data;
-      console.log(response_data);
+//       console.log(response_data);
       
-      const length = await exec.exec(`bash echo "${response_data}" | jq 'length'`);
+      const length = await exec.exec(`bash ${__dirname}/script.sh ${response_data}`);
       console.log(length);
     }
     catch (error) {
