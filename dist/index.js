@@ -29,7 +29,7 @@ async function run() {
       console.log(`============================================= START - The latest commit context =============================================`);
       console.log(response.data[index]);
       console.log(`============================================== END - The latest commit context ==============================================`);
-      
+      const str_json = JSON.stringify(response.data[index]);
 //       const os = require('os');
 //       const homedir = os.homedir();
 //       console.log(`homedir = ${homedir}`);
@@ -45,7 +45,7 @@ async function run() {
       
       const context_json_path = path.join(outputPath, 'latest_commit.json');
       const fs = require('fs');
-      fs.writeFile(context_json_path, JSON.stringify(response.data[index])), (err) => {
+      fs.writeFile(context_json_path, str_json), (err) => {
           // In case of a error throw err. 
           if (err) throw err;
       });
