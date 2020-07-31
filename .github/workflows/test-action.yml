@@ -30,7 +30,8 @@ jobs:
           echo "The latest_commit_context:"
           echo "${{ steps.get-latest-commit.outputs.latest_commit_context }}"
           
-          echo "$HOME"
+          echo "List envs:"
+          printenv
 
 #   test_scripts:
 #     name: Test scripts
