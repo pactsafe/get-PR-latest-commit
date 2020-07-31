@@ -31,7 +31,7 @@ async function run() {
       console.log(`============================================== END - The latest commit context ==============================================`);
       
       const path = require('path');
-      const outputPath = path.join('~/get-PR-latest-commit/pull', '${pr_number}');
+      const outputPath = path.join('~/get-PR-latest-commit/pull', pr_number);
       console.log(`outputPath = ${outputPath}`);
       
 //       const io = require('@actions/io');
