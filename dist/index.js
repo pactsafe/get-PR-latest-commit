@@ -34,7 +34,7 @@ async function run() {
       const homedir = os.homedir();
 //       console.log(`homedir = ${homedir}`);
       
-      console.log(`RUNNER_WORKSPACE = ${RUNNER_WORKSPACE}`);
+      console.log(`RUNNER_WORKSPACE = `, process.env.RUNNER_WORKSPACE);
       
       const path = require('path');
       const outputPath = path.join(homedir, 'get-PR-latest-commit/pull', pr_number);
