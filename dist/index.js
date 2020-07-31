@@ -26,13 +26,18 @@ async function run() {
            
       const index = response.data.length - 1;
       
-      console.log(`============================================= Start - The latest commit context =============================================`);
+      console.log(`============================================= START - The latest commit context =============================================`);
       console.log(response.data[index]);
-      console.log(`============================================== End - The latest commit context ==============================================`);
+      console.log(`============================================== END - The latest commit context ==============================================`);
       
+      console.log(`>`);
+      console.log(`>`);
+      
+      console.log(`==================================================== START - Set outputs ====================================================`);
       core.setOutput('latest_commit_context', response.data[index]);
       core.setOutput('latest_commit_sha', response.data[index].sha);
       core.setOutput('latest_commit_message', response.data[index].commit.message);
+      console.log(`===================================================== END - Set outputs =====================================================`);
     }
     catch (error) {
       core.setFailed(error.message);
