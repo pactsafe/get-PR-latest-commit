@@ -30,14 +30,14 @@ async function run() {
       console.log(response.data[index]);
       console.log(`============================================== END - The latest commit context ==============================================`);
       
-      const os = require('os');
-      const homedir = os.homedir();
+//       const os = require('os');
+//       const homedir = os.homedir();
 //       console.log(`homedir = ${homedir}`);
       
       console.log(`RUNNER_WORKSPACE = `, process.env.RUNNER_WORKSPACE);
       
       const path = require('path');
-      const outputPath = path.join(homedir, 'get-PR-latest-commit/pull', pr_number);
+      const outputPath = path.join(process.env.RUNNER_WORKSPACE, 'latest_commit_context/pull', pr_number);
 //       console.log(`outputPath = ${outputPath}`);
       
       const io = require('@actions/io');
