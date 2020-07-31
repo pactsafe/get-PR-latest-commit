@@ -24,10 +24,15 @@ async function run() {
         pull_number: pr_number
       });
            
-      const index = response.data.length - 1;          
+      const index = response.data.length - 1;
+      
+      console.log(`============================================= Start - The latest commit context =============================================`);
+      console.log(response.data[index]);
+      console.log(`============================================== End - The latest commit context ==============================================`);
+      
       core.setOutput('latest_commit_context', response.data[index]);
-      core.setOutput('latest_commit_message', response.data[index].commit.message);
       core.setOutput('latest_commit_sha', response.data[index].sha);
+      core.setOutput('latest_commit_message', response.data[index].commit.message);
     }
     catch (error) {
       core.setFailed(error.message);
