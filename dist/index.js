@@ -32,15 +32,23 @@ async function run() {
       
       const path = require('path');
       const outputPath = path.join('~/get-PR-latest-commit/pull', pr_number);
-      console.log(`outputPath = ${outputPath}`);
+//       console.log(`outputPath = ${outputPath}`);
       
-//       const io = require('@actions/io');
-//       await io.mkdirP('~/get-PR-latest-commit/pull/${pr_number}');
+      const io = require('@actions/io');
+      await io.mkdirP(outputPath);
+      
+      const context_json_path = path.join(outputPath, 'latest_commit.json');
+      const fs = require('fs');
+      fs.writeFile(context_json_path, response.data[index], (err) => {
+          // In case of a error throw err. 
+          if (err) throw err;
+      });
+      
       console.log(`>`);
       console.log(`>`);
       
       console.log(`==================================================== START - Set outputs ====================================================`);
-      core.setOutput('latest_commit_context', response.data[index]);
+      core.setOutput('latest_commit_context', context_json_path);
       core.setOutput('latest_commit_sha', response.data[index].sha);
       core.setOutput('latest_commit_message', response.data[index].commit.message);
       console.log(`===================================================== END - Set outputs =====================================================`);
