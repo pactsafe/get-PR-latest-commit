@@ -45,7 +45,7 @@ async function run() {
       
       const context_json_path = path.join(outputPath, 'latest_commit.json');
       const fs = require('fs');
-      fs.writeFile(context_json_path, str_json), (err) => {
+      fs.writeFile(context_json_path, JSON.stringify(response.data[index]), (err) => {
           // In case of a error throw err. 
           if (err) throw err;
       });
