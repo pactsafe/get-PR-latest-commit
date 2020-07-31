@@ -29,12 +29,8 @@ async function run() {
       console.log(`============================================= START - The latest commit context =============================================`);
       console.log(response.data[index]);
       console.log(`============================================== END - The latest commit context ==============================================`);
-      const str_json = JSON.stringify(response.data[index]);
-//       const os = require('os');
-//       const homedir = os.homedir();
-//       console.log(`homedir = ${homedir}`);
-      
-      console.log(`RUNNER_WORKSPACE = `, process.env.RUNNER_WORKSPACE);
+           
+//       console.log(`RUNNER_WORKSPACE = `, process.env.RUNNER_WORKSPACE);
       
       const path = require('path');
       const outputPath = path.join(process.env.RUNNER_WORKSPACE, 'latest_commit_context/pull', pr_number);
