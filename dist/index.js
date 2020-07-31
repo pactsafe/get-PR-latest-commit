@@ -30,8 +30,12 @@ async function run() {
       console.log(response.data[index]);
       console.log(`============================================== END - The latest commit context ==============================================`);
       
+      const os = require('os');
+      const homedir = os.homedir();
+      console.log(`homedir = ${homedir}`);
+      
       const path = require('path');
-      const outputPath = path.join('~/get-PR-latest-commit/pull', pr_number);
+      const outputPath = path.join('get-PR-latest-commit/pull', pr_number);
 //       console.log(`outputPath = ${outputPath}`);
       
       const io = require('@actions/io');
