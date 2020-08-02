@@ -50,7 +50,8 @@ async function run() {
       console.log(`>`);
       
       console.log(`==================================================== START - Set outputs ====================================================`);
-      core.setOutput('latest_commit_context', context_json_path);
+//       core.setOutput('latest_commit_context', context_json_path);
+      core.setOutput('latest_commit_context', JSON.stringify(response.data[index]));
       core.setOutput('latest_commit_sha', response.data[index].sha);
       core.setOutput('latest_commit_message', response.data[index].commit.message);
       console.log(`===================================================== END - Set outputs =====================================================`);
