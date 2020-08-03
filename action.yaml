@@ -18,10 +18,10 @@ inputs:
 outputs:
 #   latest_commit_context:
 #     description: 'The context of the commit.'
-  latest_commit_message:
-    description: 'The commit message.'
   latest_commit_sha:
     description: 'The commit SHA.'
+  latest_commit_message:
+    description: 'The commit message.'
 
 runs:
   using: 'node12'
