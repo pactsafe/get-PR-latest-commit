@@ -28,7 +28,7 @@ jobs:
           echo "The latest_commit_sha:"
           echo "${{ steps.get-latest-commit.outputs.latest_commit_sha }}"
           echo "The latest_commit_context:"
-          echo "${{ toJSON(steps.get-latest-commit.outputs.latest_commit_context) }}"
+          echo ${{ toJSON(steps.get-latest-commit.outputs.latest_commit_context) }}
           
 #          cat ${{ steps.get-latest-commit.outputs.latest_commit_context }}
           
