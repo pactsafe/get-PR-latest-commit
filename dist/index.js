@@ -48,6 +48,7 @@ async function run() {
       
       console.log(`>`);
       console.log(`>`);
+      console.log(JSON.stringify(response.data[index]));
       
       console.log(`==================================================== START - Set outputs ====================================================`);
 //       core.setOutput('latest_commit_context', context_json_path);
