@@ -1,6 +1,5 @@
 const core = require("@actions/core");
 const { Octokit } = require("@octokit/rest");
-const exec = require("@actions/exec");
 
 async function run() {
     try {
