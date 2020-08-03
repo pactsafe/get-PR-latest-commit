@@ -22,6 +22,7 @@ jobs:
         uses: ./
 
       - name: print the info of the latest commit
+        shell: bash
         run: |
           echo "The latest_commit_message:"
           echo "${{ steps.get-latest-commit.outputs.latest_commit_message }}"
