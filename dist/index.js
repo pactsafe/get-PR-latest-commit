@@ -26,33 +26,32 @@ async function run() {
            
       const index = response.data.length - 1;
       
-      console.log(`============================================= START - The latest commit context =============================================`);
+      console.log(`============================================= START - The context of latest commit =============================================`);
       console.log(response.data[index]);
-      console.log(`============================================== END - The latest commit context ==============================================`);
+      console.log(`============================================== END - The context of latest commit ==============================================`);
            
 //       console.log(`RUNNER_WORKSPACE = `, process.env.RUNNER_WORKSPACE);
       
-      const path = require('path');
-      const outputPath = path.join(process.env.RUNNER_WORKSPACE, 'latest_commit_context/pull', pr_number);
+//       const path = require('path');
+//       const outputPath = path.join(process.env.RUNNER_WORKSPACE, 'latest_commit_context/pull', pr_number);
 //       console.log(`outputPath = ${outputPath}`);
       
-      const io = require('@actions/io');
-      await io.mkdirP(outputPath);
+//       const io = require('@actions/io');
+//       await io.mkdirP(outputPath);
       
-      const context_json_path = path.join(outputPath, 'latest_commit.json');
-      const fs = require('fs');
-      fs.writeFile(context_json_path, JSON.stringify(response.data[index]), (err) => {
-          // In case of a error throw err. 
-          if (err) throw err;
-      });
+//       const context_json_path = path.join(outputPath, 'latest_commit.json');
+//       const fs = require('fs');
+//       fs.writeFile(context_json_path, JSON.stringify(response.data[index]), (err) => {
+//           // In case of a error throw err. 
+//           if (err) throw err;
+//       });
       
       console.log(`>`);
       console.log(`>`);
-      console.log(JSON.stringify(response.data[index]));
       
       console.log(`==================================================== START - Set outputs ====================================================`);
 //       core.setOutput('latest_commit_context', context_json_path);
-      core.setOutput('latest_commit_context', JSON.stringify(response.data[index]));
+//       core.setOutput('latest_commit_context', JSON.stringify(response.data[index]));
       core.setOutput('latest_commit_sha', response.data[index].sha);
       core.setOutput('latest_commit_message', response.data[index].commit.message);
       console.log(`===================================================== END - Set outputs =====================================================`);
