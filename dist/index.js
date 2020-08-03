@@ -1,12 +1,10 @@
-const core = require("@actions/core");
-const { Octokit } = require("@octokit/rest");
-
 async function run() {
     try {
-      const token = core.getInput('token');
-      const octokit = new Octokit({ auth: token });
-      
+      const core = require("@actions/core");
       const repository = core.getInput('repository');
+      const pr_number = core.getInput('pull_number');
+      const token = core.getInput('token');
+      
       const splitRepository = repository.split('/');
       if (splitRepository.length !== 2 ||
           !splitRepository[0] ||
@@ -14,9 +12,10 @@ async function run() {
           throw new Error(`Invalid repository '${repository}'. Expected format {owner}/{repo}.`);
       }
       const repo_owner = splitRepository[0];
-      const repo_name = splitRepository[1];
-      const pr_number = core.getInput('pull_number');
-           
+      const repo_name = splitRepository[1];     
+      
+      const { Octokit } = require("@octokit/rest");
+      const octokit = new Octokit({ auth: token });
       const response = await octokit.pulls.listCommits({
         owner: repo_owner,
         repo: repo_name,
@@ -28,6 +27,12 @@ async function run() {
       console.log(`============================================= START - The context of latest commit =============================================`);
       console.log(response.data[index]);
       console.log(`============================================== END - The context of latest commit ==============================================`);
+      console.log(`>`);
+      console.log(`>`);
+      console.log(`==================================================== START - Set outputs ====================================================`);
+      core.setOutput('latest_commit_sha', response.data[index].sha);
+      core.setOutput('latest_commit_message', response.data[index].commit.message);
+      console.log(`===================================================== END - Set outputs =====================================================`);
            
 //       console.log(`RUNNER_WORKSPACE = `, process.env.RUNNER_WORKSPACE);
       
@@ -44,16 +49,9 @@ async function run() {
 //           // In case of a error throw err. 
 //           if (err) throw err;
 //       });
-      
-      console.log(`>`);
-      console.log(`>`);
-      
-      console.log(`==================================================== START - Set outputs ====================================================`);
+              
 //       core.setOutput('latest_commit_context', context_json_path);
 //       core.setOutput('latest_commit_context', JSON.stringify(response.data[index]));
-      core.setOutput('latest_commit_sha', response.data[index].sha);
-      core.setOutput('latest_commit_message', response.data[index].commit.message);
-      console.log(`===================================================== END - Set outputs =====================================================`);
     }
     catch (error) {
       core.setFailed(error.message);
