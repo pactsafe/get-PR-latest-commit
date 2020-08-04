@@ -31,8 +31,8 @@ async function run() {
       console.log(`The context of latest commit:⭐🔑`);
       console.log(response.data[index]);
       
-      console.log(`✅🏆👏`);
-      console.log(`🌈🐎👌`);    
+      console.log(`>✅🏆👏`);
+      console.log(`>🌈🐎👌`);    
       
       // Generate the path to save the json file
       const path = require('path');
