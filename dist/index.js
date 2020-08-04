@@ -44,7 +44,7 @@ async function run() {
       
       // Write the json object of the latest commit into the json file
       const fs = require('fs');
-      fs.writeFile(path_json_file, JSON.stringify(response.data[index], null, 4), (err) => {
+      fs.writeFile(path_json_file, JSON.stringify(response.data[index], null, 3), (err) => {
           // In case of a error throw err. 
           if (err) throw err;
       });
