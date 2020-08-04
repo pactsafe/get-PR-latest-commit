@@ -33,7 +33,10 @@ async function run() {
       core.setOutput('latest_commit_sha', response.data[index].sha);
       core.setOutput('latest_commit_message', response.data[index].commit.message);
       console.log(`===================================================== END - Set outputs =====================================================`);
-           
+      
+      const latest_commit = JSON.stringify(response.data[index], null, 4);
+      console.log(latest_commit);
+      
 //       console.log(`RUNNER_WORKSPACE = `, process.env.RUNNER_WORKSPACE);
       
 //       const path = require('path');
