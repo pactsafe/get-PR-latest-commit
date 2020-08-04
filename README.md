@@ -8,7 +8,7 @@ Through this action, you can get the following information:
 ## Inputs
 |Name         |Required |Description                                                                                                 |Default                                  |
 |-------------|:-------:|------------------------------------------------------------------------------------------------------------|-----------------------------------------|
-|`repository` |YES      |The name of the repository which the pull request is in. <BR/>For example, 'ActionsRML/latest-commit-on-PR' |`${{ github.repository }}`               |
+|`repository` |YES      |The name of the repository which the pull request is in. <BR/>E.g. '**ActionsRML/latest-commit-on-PR**'     |`${{ github.repository }}`               |
 |`pull_number`|YES      |The number of the pull request.                                                                             |`${{ github.event.pull_request.number }}`|
 |`token`      |-        |Personal access token (PAT) used to authenticate.                                                           |`${{ github.token }}`                    |
 
