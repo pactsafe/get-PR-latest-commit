@@ -21,7 +21,7 @@ outputs:
   latest_commit_message:
     description: 'The commit message.'
   latest_commit_context:
-    description: 'The context of the commit.'
+    description: 'The path of the JSON file to store the context of the commit.'
 
 runs:
   using: 'node12'
