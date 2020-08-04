@@ -36,6 +36,7 @@ async function run() {
       
       const latest_commit = JSON.stringify(response.data[index], null, 4);
       console.log(latest_commit);
+      core.setOutput('latest_commit_context', latest_commit);
       
 //       console.log(`RUNNER_WORKSPACE = `, process.env.RUNNER_WORKSPACE);
       
