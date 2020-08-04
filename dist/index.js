@@ -28,9 +28,9 @@ async function run() {
       // Get the index of the latest comment in the array
       const index = response.data.length - 1;
       
-      console.log(`➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖ The context of latest commit ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖`);
+      console.log(`➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖ ⭐The context of latest commit⭐ ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖`);
       console.log(response.data[index]);
-      console.log(`➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖`);
+      console.log(`➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖`);
       
       console.log(`>`);
       console.log(`>`);    
