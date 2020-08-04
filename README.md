@@ -1,2 +1,6 @@
 # get-PR-latest-commit
-An action to get the latest commit on a pull request, and output the information of the latest commit, include the commit context (JSON type), commit message, commit SHA.
+An action to get the latest commit on pull request. <BR/>
+The output information includes: <BR/>
+* The commit message of the latest commit.
+* The commit SHA of the latest commit.
+* The path of the JSON file to store the context of the commit.
