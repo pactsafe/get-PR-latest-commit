@@ -50,14 +50,14 @@ async function run() {
       });
       
       console.log(`Set outputs:🔧✍`);
-      console.log(`latest_commit_context = `, path_json_file);
       core.setOutput('latest_commit_context', path_json_file);
+      console.log(`latest_commit_context = `, path_json_file);
       
-      console.log(`latest_commit_sha = `, response.data[index].sha);
       core.setOutput('latest_commit_sha', response.data[index].sha);
+      console.log(`latest_commit_sha = `, response.data[index].sha);
       
-      console.log(`latest_commit_message = `, response.data[index].commit.message);
       core.setOutput('latest_commit_message', response.data[index].commit.message);
+      console.log(`latest_commit_message = `, response.data[index].commit.message);
     }
     catch (error) {
       core.setFailed(error.message);
