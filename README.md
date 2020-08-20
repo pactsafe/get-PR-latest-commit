@@ -39,8 +39,10 @@ jobs:
         run: |
           echo "The commit message:"
           echo "${{ steps.get-latest-commit.outputs.latest_commit_message }}"
+          
           echo "The commit sha:"
           echo "${{ steps.get-latest-commit.outputs.latest_commit_sha }}"
+          
           echo "The commit context:"
           cat ${{ steps.get-latest-commit.outputs.latest_commit_context }}
 ```
