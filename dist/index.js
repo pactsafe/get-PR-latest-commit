@@ -49,6 +49,7 @@ async function run() {
           if (err) throw err;
       });
       
+      // Set outputs for the information of the latest commit
       console.log(`Set outputs:🔧✍`);
       core.setOutput('latest_commit_context', path_json_file);
       console.log(`latest_commit_context = `, path_json_file);
