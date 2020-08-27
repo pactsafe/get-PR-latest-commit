@@ -1,7 +1,7 @@
 async function run() {
+    const core = require("@actions/core");
     try {
       // Fetch all the inputs
-      const core = require("@actions/core");
       const repository = core.getInput('repository');
       const pr_number = core.getInput('pull_number');
       const token = core.getInput('token');
