@@ -10,7 +10,7 @@ On **`v1`** of this action, we did not consider that a PR could contain too much
 <br />
 <br />
 On **`v2`** of this action, we fixed this defect. The action can traverse all the pages until the last commit on the last page is found.
-> **Note:** This action still follows the limitation of the "**List commits on a pull request**" API that it can only list a maximum of 250 commits for a pull request. If the number of the PR commits is more than 250, the action will not correctly return the actual latest commit. At this time, you need to use the "[**List commits**](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-commits)" API.
+> **Note:** This action still follows the limitation of the "**List commits on a pull request**" API that it can only list a maximum of 250 commits for a pull request. If the number of the PR commits is more than 250, the action will not correctly return the actual latest commit. To receive a complete commit list for pull requests with more than 250 commits, you need to use the "[**List commits**](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-commits)" API.
 ##
 
 ## Inputs
