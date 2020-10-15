@@ -1,9 +1,17 @@
-# get-PR-latest-commit v1
-The GitHub Action to get the latest commit on pull request. This Action (written in JavaScript) wraps the "[List commits on a pull request](https://docs.github.com/en/rest/reference/pulls#list-commits-on-a-pull-request)" API, and extracts the infomation of the latest commit from the response of the API.<BR/>
+# get-PR-latest-commit v2
+The GitHub Action to get the latest commit on pull request. This Action (written in JavaScript) wraps the "[**List commits on a pull request**](https://docs.github.com/en/rest/reference/pulls#list-commits-on-a-pull-request)" API, and extracts the infomation of the latest commit from the response of the API.<BR/>
 Through this action, you can get the following information:
 * The commit message of the latest commit.
 * The commit SHA of the latest commit.
 * The path of a JSON file generated to store the context of the latest commit.
+
+## What's new? (Fix [#5](https://github.com/ActionsRML/get-PR-latest-commit/issues/5))
+On **`v1`** of this action, we did not consider that a PR could contain too much commits. So I ignored the inputs parameters "**`per_page`**" and "**`page`**". It can only return the first page that contains up to 30 items. This causes the issue that if the PR contains more than 30 commits, the action can't return the actual latest commit on the PR. The return commit is the last one on the first page. So, the **`v1`** only can work correctly if the total count of the PR commits is less than or equal to 30.
+<br />
+<br />
+On **`v2`** of this action, we fixed this defect. The action can traverse all the pages until the last commit on the last page is found.
+> **Note:** This action still follows the limitation of the "**List commits on a pull request**" API that it can only list a maximum of 250 commits for a pull request. If the number of the PR commits is more than 250, the action will not correctly return the actual latest commit. At this time, you need to use the "[**List commits**](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-commits)" API.
+##
 
 ## Inputs
 |Name         |Required |Description                                                                                                 |Default                                  |
