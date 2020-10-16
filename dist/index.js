@@ -19,6 +19,7 @@ async function run() {
       // Execute the API "List commits on a pull request", see 'https://octokit.github.io/rest.js/v18#pulls-list-commits'
       var page_number = 1;
       var obj_latest_commit;
+      var total_count = 0;
       const { Octokit } = require("@octokit/rest");
       const octokit = new Octokit({ auth: token });
       while (true) {
@@ -35,6 +36,7 @@ async function run() {
           break;
         }
         else {
+          total_count += length;
           obj_latest_commit = response.data[length - 1];
         }
         
@@ -49,7 +51,8 @@ async function run() {
       //   repo: repo_name,
       //   pull_number: pr_number
       // });
-           
+      
+      console.log(`The total count of commits on this pull request is ${total_count}.`);
       console.log(`⭐➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖ The context of latest commit ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖⭐`);
       console.log(obj_latest_commit);
       console.log(`⭐➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖⭐`);
