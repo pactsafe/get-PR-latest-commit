@@ -17,19 +17,44 @@ async function run() {
       const repo_name = splitRepository[1];     
       
       // Execute the API "List commits on a pull request", see 'https://octokit.github.io/rest.js/v18#pulls-list-commits'
+      var page_number = 1;
+      var obj_latest_commit;
+      var total_count = 0;
       const { Octokit } = require("@octokit/rest");
       const octokit = new Octokit({ auth: token });
-      const response = await octokit.pulls.listCommits({
-        owner: repo_owner,
-        repo: repo_name,
-        pull_number: pr_number
-      });
+      while (true) {
+        const response = await octokit.pulls.listCommits({
+          owner: repo_owner,
+          repo: repo_name,
+          pull_number: pr_number,
+          per_page: 100,
+          page: page_number
+        });
+
+        const length = response.data.length;
+        if (length < 1) {
+          break;
+        }
+        else {
+          total_count += length;
+          obj_latest_commit = response.data[length - 1];
+        }
+        
+        if (length < 100) {
+          break;
+        }
+        page_number++;
+      }
+
+      // const response = await octokit.pulls.listCommits({
+      //   owner: repo_owner,
+      //   repo: repo_name,
+      //   pull_number: pr_number
+      // });
       
-      // Get the index of the latest comment in the array
-      const index = response.data.length - 1;
-      
+      console.log(`The total count of commits on this pull request is ${total_count}.`);
       console.log(`⭐➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖ The context of latest commit ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖⭐`);
-      console.log(response.data[index]);
+      console.log(obj_latest_commit);
       console.log(`⭐➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖⭐`);
       
       console.log(`>`);
@@ -44,7 +69,7 @@ async function run() {
       
       // Write the json object of the latest commit into the json file
       const fs = require('fs');
-      fs.writeFile(path_json_file, JSON.stringify(response.data[index], null, 2), (err) => {
+      fs.writeFile(path_json_file, JSON.stringify(obj_latest_commit, null, 2), (err) => {
           // In case of a error throw err. 
           if (err) throw err;
       });
@@ -52,13 +77,13 @@ async function run() {
       // Set outputs for the information of the latest commit
       console.log(`Set outputs:🔧✍`);
       core.setOutput('latest_commit_context', path_json_file);
-      console.log(`latest_commit_context = `, path_json_file);
+      console.log(`latest_commit_context =`, path_json_file);
       
-      core.setOutput('latest_commit_sha', response.data[index].sha);
-      console.log(`latest_commit_sha = `, response.data[index].sha);
+      core.setOutput('latest_commit_sha', obj_latest_commit.sha);
+      console.log(`latest_commit_sha =`, obj_latest_commit.sha);
       
-      core.setOutput('latest_commit_message', response.data[index].commit.message);
-      console.log(`latest_commit_message = `, response.data[index].commit.message);
+      core.setOutput('latest_commit_message', obj_latest_commit.commit.message);
+      console.log(`latest_commit_message =`, obj_latest_commit.commit.message);
     }
     catch (error) {
       core.setFailed(error.message);
