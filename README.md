@@ -33,11 +33,7 @@ on: pull_request
 
 jobs:
   job1:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ubuntu-latest
     steps:      
       - name: Get the latest commit on PR
         id: get-latest-commit
