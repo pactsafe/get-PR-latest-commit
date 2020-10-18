@@ -55,5 +55,5 @@ jobs:
 ##
 
 ## License
-The scripts and documentation in this project are released under the [MIT License](https://github.com/ActionsRML/get-PR-latest-commit/blob/master/LICENSE) .
+The scripts and documentation in this project are released under the [MIT License](https://github.com/ActionsRML/get-PR-latest-commit/blob/master/LICENSE).
 ##
